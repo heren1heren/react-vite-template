@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './index.scss';
 import { Person } from './App';
 const root: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(root).render(
