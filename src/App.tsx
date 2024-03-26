@@ -1,12 +1,37 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.scss';
 
-export function Greeting() {
-  // eslint-disable-next-line react/no-unescaped-entities
-  return <h1>" I swear by my pretty floarl bonn.... "</h1>;
-}
-export function DisplayCat() {
-  return <div className="cat-image"></div>;
+export function Person() {
+  const [lastName, setLastName] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [person, setPerson] = useState({
+    name: firstName + ' ' + lastName,
+    age: 100,
+  });
+  const handleFirstName = (e) => {
+    setFirstName(e.target.value);
+    // setPerson({ ...person, name: `${firstName} ${lastName}` });
+  };
+  const handleLastName = (e) => {
+    setLastName(e.target.value);
+    // setPerson({ ...person, name: `${firstName} ${lastName}` });
+  };
+  const handleIncreaseAge = () => {
+    setPerson({ ...person, age: person.age + 1 });
+  };
+
+  return (
+    <>
+      <h1>{firstName + ' ' + lastName}</h1>
+      <h2>{person.age}</h2>
+      <div>
+        <p>FirstName:</p>
+        <input onChange={handleFirstName} value={firstName} />
+      </div>
+      <div>
+        <p>LastName:</p>
+        <input onChange={handleLastName} value={lastName} />
+      </div>
+      <button onClick={handleIncreaseAge}>Increase age</button>
+    </>
+  );
 }
