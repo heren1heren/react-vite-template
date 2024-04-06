@@ -1,9 +1,23 @@
 import { render, screen } from '@testing-library/react';
-import { App } from './App';
+import userEvent from '@testing-library/user-event';
+import App from './App';
 
 describe('App component', () => {
-  it('renders correct heading', () => {
-    render(<App />);
-    expect(screen.getByRole('heading').textContent).toMatch(/our first test/i);
+  it('renders magnificent monkeys', () => {
+    // since screen does not have the container property, we'll destructure render to obtain a container for this test
+    const { container } = render(<App />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders radical rhinos after button click', async () => {
+    const user = userEvent.setup();
+
+    render(<App />); // Render the component to prepare for testing
+    // render passes into document.body (screen)
+    const button = screen.getByRole('button', { name: 'Click Me' });
+
+    await user.click(button);
+
+    expect(screen.getByRole('heading')).toMatchSnapshot();
   });
 });
