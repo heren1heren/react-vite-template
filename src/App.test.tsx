@@ -1,23 +1,15 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import App from './App';
-
+import { BrowserRouter } from 'react-router-dom';
 describe('App component', () => {
-  it('renders magnificent monkeys', () => {
+  it('renders app component', () => {
     // since screen does not have the container property, we'll destructure render to obtain a container for this test
-    const { container } = render(<App />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('renders radical rhinos after button click', async () => {
-    const user = userEvent.setup();
-
-    render(<App />); // Render the component to prepare for testing
-    // render passes into document.body (screen)
-    const button = screen.getByRole('button', { name: 'Click Me' });
-
-    await user.click(button);
-
-    expect(screen.getByRole('heading')).toMatchSnapshot();
+    render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    );
+    const link = screen.getByRole('link'); // if link is find then good
+    expect(link).toBeInTheDocument();
   });
 });
