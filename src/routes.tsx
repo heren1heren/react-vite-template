@@ -1,11 +1,4 @@
-import { element } from 'prop-types';
-import App, {
-  Profile,
-  ErrorPage,
-  HomePage,
-  DefaultProfile,
-  DefaultProfilePage,
-} from './App';
+import App, { Profile, ErrorPage, HomePage } from './router-template';
 
 const routes = [
   {
