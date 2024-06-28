@@ -1,4 +1,4 @@
-import App, { Profile, ErrorPage, HomePage } from './router-template';
+import App, { ErrorPage } from './router-template';
 
 const routes = [
   {
@@ -6,17 +6,10 @@ const routes = [
     element: <App />,
     errorElement: <ErrorPage />,
   },
-  {
-    path: 'profile/:name',
-    element: <Profile />,
-  },
-  {
-    path: 'profile/',
-    element: <Profile />,
-  },
-  {
-    path: 'homePage', // new element
-    element: <HomePage />,
-  },
+
+  // {
+  //   path: 'homePage', // new element
+  //   element: <HomePage />,
+  // },
 ];
 export default routes;
